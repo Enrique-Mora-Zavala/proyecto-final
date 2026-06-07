@@ -1,0 +1,43 @@
+{
+  "alumnos": [],
+  "proyectos": [],
+  "participaciones": [],
+  "carreras": [
+    {
+      "id": 1,
+      "nombre": "Ingeniería en Sistemas Computacionales"
+    },
+    {
+      "id": 2,
+      "nombre": "Ingeniería en Tecnologías de la Información y Comunicaciones"
+    }
+  ],
+  "docentes": [
+    {
+      "id": 1,
+      "nombreCompleto": "Juan Pérez"
+    }
+  ],
+  "tiposParticipacion": [
+    {
+      "id": 1,
+      "nombre": "Servicio Social"
+    },
+    {
+      "id": 2,
+      "nombre": "Residencia Profesional"
+    },
+    {
+      "id": 3,
+      "nombre": "Servicio Social (No Oficial)"
+    },
+    {
+      "id": 4,
+      "nombre": "Residencia Profesional (No Oficial)"
+    },
+    {
+      "id": 5,
+      "nombre": "Proyecto de Investigación"
+    }
+  ]
+}
