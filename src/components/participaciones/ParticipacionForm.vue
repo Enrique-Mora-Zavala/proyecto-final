@@ -6,7 +6,7 @@ const props = defineProps({
   participacionEditar: Object,
 })
 
-const emit = defineEmits(['participacion-guardada'])
+const emit = defineEmits(['participacion-guardada', 'cancelar-edicion'])
 
 const alumnos = ref([])
 const proyectos = ref([])

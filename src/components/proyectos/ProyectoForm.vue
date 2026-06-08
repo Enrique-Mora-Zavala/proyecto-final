@@ -6,7 +6,7 @@ const props = defineProps({
   proyectoEditar: Object,
 })
 
-const emit = defineEmits(['proyecto-guardado'])
+const emit = defineEmits(['proyecto-guardado', 'cancelar-edicion'])
 
 const docentes = ref([])
 

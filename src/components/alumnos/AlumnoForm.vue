@@ -6,7 +6,7 @@ const props = defineProps({
   alumnoEditar: Object,
 })
 
-const emit = defineEmits(['alumno-guardado'])
+const emit = defineEmits(['alumno-guardado', 'cancelar-edicion'])
 
 const carreras = ref([])
 
@@ -29,6 +29,11 @@ const limpiarFormulario = () => {
     carreraId: '',
     semestre: '',
   }
+}
+
+const cancelarEdicion = () => {
+  limpiarFormulario()
+  emit('cancelar-edicion')
 }
 
 const guardarAlumno = async () => {
@@ -96,5 +101,6 @@ onMounted(() => {
     <button type="submit">
       {{ alumnoEditar ? 'Actualizar alumno' : 'Guardar alumno' }}
     </button>
+    <button v-if="alumnoEditar" type="button" @click="cancelarEdicion">Cancelar</button>
   </form>
 </template>

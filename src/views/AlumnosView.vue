@@ -14,13 +14,21 @@ const recargarAlumnos = () => {
 const editarAlumno = (alumno) => {
   alumnoSeleccionado.value = alumno
 }
+
+const cancelarEdicion = () => {
+  alumnoSeleccionado.value = null
+}
 </script>
 
 <template>
   <div>
     <h1>Alumnos</h1>
 
-    <AlumnoForm :alumnoEditar="alumnoSeleccionado" @alumno-guardado="recargarAlumnos" />
+    <AlumnoForm
+      :alumnoEditar="alumnoSeleccionado"
+      @alumno-guardado="recargarAlumnos"
+      @cancelar-edicion="cancelarEdicion"
+    />
 
     <hr />
 
