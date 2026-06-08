@@ -3,11 +3,33 @@ import { ref, onMounted } from 'vue'
 import api from '../../services/api'
 
 const alumnos = ref([])
+const carreras = ref([])
 
 const cargarAlumnos = async () => {
   const response = await api.get('/alumnos')
   alumnos.value = response.data
 }
+
+const cargarCarreras = async () => {
+  const response = await api.get('/carreras')
+  carreras.value = response.data
+}
+
+const obtenerCarrera = (id) => {
+  const carrera = carreras.value.find((c) => c.id === id)
+  return carrera ? carrera.nombre : 'Sin carrera'
+}
+
+const eliminarAlumno = async (id) => {
+  const confirmar = confirm('¿Seguro que deseas eliminar este alumno?')
+
+  if (confirmar) {
+    await api.delete(`/alumnos/${id}`)
+    cargarAlumnos()
+  }
+}
+
+cargarCarreras()
 
 onMounted(() => {
   cargarAlumnos()
@@ -20,10 +42,30 @@ onMounted(() => {
 
     <p v-if="alumnos.length === 0">No hay alumnos registrados.</p>
 
-    <ul v-else>
-      <li v-for="alumno in alumnos" :key="alumno.id">
-        {{ alumno.nombreCompleto }} - {{ alumno.numeroControl }}
-      </li>
-    </ul>
+    <table v-else border="1">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre completo</th>
+          <th>Número de control</th>
+          <th>Carrera</th>
+          <th>Semestre</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr v-for="alumno in alumnos" :key="alumno.id">
+          <td>{{ alumno.id }}</td>
+          <td>{{ alumno.nombreCompleto }}</td>
+          <td>{{ alumno.numeroControl }}</td>
+          <td>{{ obtenerCarrera(alumno.carreraId) }}</td>
+          <td>{{ alumno.semestre }}</td>
+          <td>
+            <button @click="eliminarAlumno(alumno.id)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>

@@ -1,5 +1,13 @@
 {
-  "alumnos": [],
+  "alumnos": [
+    {
+      "nombreCompleto": "Enrique Mora Zavala",
+      "numeroControl": "1",
+      "carreraId": 1,
+      "semestre": 10,
+      "id": 1
+    }
+  ],
   "proyectos": [],
   "participaciones": [],
   "carreras": [
