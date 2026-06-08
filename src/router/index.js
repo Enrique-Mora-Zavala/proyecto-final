@@ -4,6 +4,7 @@ import HomeView from '../views/HomeView.vue'
 import AlumnosView from '../views/AlumnosView.vue'
 import ProyectosView from '../views/ProyectosView.vue'
 import ParticipacionesView from '../views/ParticipacionesView.vue'
+import DocentesView from '../views/DocentesView.vue'
 
 const router = createRouter({
   history: createWebHistory(),

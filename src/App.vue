@@ -4,6 +4,7 @@
       <router-link to="/">Inicio</router-link> | <router-link to="/alumnos">Alumnos</router-link> |
       <router-link to="/proyectos">Proyectos</router-link> |
       <router-link to="/participaciones">Participaciones</router-link>
+      <router-link to="/docentes">Docentes</router-link> |
     </nav>
 
     <hr />
