@@ -76,7 +76,7 @@ onMounted(() => {
           <td>{{ participacion.id }}</td>
           <td>{{ obtenerAlumno(participacion.alumnoId) }}</td>
           <td>{{ obtenerProyecto(participacion.proyectoId) }}</td>
-          <td>{{ obtenerTipo(participacion.tipoId) }}</td>
+          <td>{{ obtenerTipo(participacion.tipoParticipacionId) }}</td>
           <td>{{ participacion.fechaInicio }}</td>
           <td>
             <button @click="seleccionarParticipacion(participacion)">✏️</button>

@@ -76,12 +76,22 @@ onMounted(() => {
 
     <div>
       <label>Alumno:</label>
-      <input v-model="participacion.alumnoId" type="text" required />
+      <select v-model="participacion.alumnoId" required>
+        <option value="">Seleccione un alumno</option>
+        <option v-for="alumno in alumnos" :key="alumno.id" :value="alumno.id">
+          {{ alumno.id }} - {{ alumno.nombreCompleto }}
+        </option>
+      </select>
     </div>
 
     <div>
       <label>Proyecto:</label>
-      <input v-model="participacion.proyectoId" type="text" required />
+      <select v-model="participacion.proyectoId" required>
+        <option value="">Seleccione un proyecto</option>
+        <option v-for="proyecto in proyectos" :key="proyecto.id" :value="proyecto.id">
+          {{ proyecto.id }} - {{ proyecto.nombre }}
+        </option>
+      </select>
     </div>
 
     <div>
@@ -89,7 +99,7 @@ onMounted(() => {
       <select v-model="participacion.tipoParticipacionId" required>
         <option value="">Seleccione el tipo de participación</option>
         <option v-for="tipo in tiposParticipacion" :key="tipo.id" :value="tipo.id">
-          {{ tipo.nombre }}
+          {{ tipo.id }} - {{ tipo.nombre }}
         </option>
       </select>
     </div>

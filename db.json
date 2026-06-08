@@ -17,7 +17,15 @@
       "id": 1
     }
   ],
-  "participaciones": [],
+  "participaciones": [
+    {
+      "alumnoId": 1,
+      "proyectoId": 1,
+      "tipoParticipacionId": 1,
+      "fechaInicio": "2026-06-17",
+      "id": 1
+    }
+  ],
   "carreras": [
     {
       "id": 1,
