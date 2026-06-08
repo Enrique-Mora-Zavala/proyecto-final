@@ -8,7 +8,15 @@
       "id": 1
     }
   ],
-  "proyectos": [],
+  "proyectos": [
+    {
+      "nombre": "Proyecto 1",
+      "descripcion": "Proyecto 1",
+      "fechaInicio": "2026-06-03",
+      "docenteId": 1,
+      "id": 1
+    }
+  ],
   "participaciones": [],
   "carreras": [
     {
