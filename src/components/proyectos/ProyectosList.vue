@@ -67,8 +67,8 @@ onMounted(() => {
           <td>{{ proyecto.fechaInicio }}</td>
           <td>{{ obtenerDocente(proyecto.docenteId) }}</td>
           <td>
-            <button @click="seleccionarProyecto(proyecto)">Editar</button>
-            <button @click="eliminarProyecto(proyecto.id)">Eliminar</button>
+            <button @click="seleccionarProyecto(proyecto)">✏️</button>
+            <button @click="eliminarProyecto(proyecto.id)">🗑️</button>
           </td>
         </tr>
       </tbody>
