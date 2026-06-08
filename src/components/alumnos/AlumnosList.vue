@@ -67,8 +67,8 @@ onMounted(() => {
           <td>{{ obtenerCarrera(alumno.carreraId) }}</td>
           <td>{{ alumno.semestre }}</td>
           <td>
-            <button @click="seleccionarAlumno(alumno)">Editar</button>
-            <button @click="eliminarAlumno(alumno.id)">Eliminar</button>
+            <button @click="seleccionarAlumno(alumno)">✏️</button>
+            <button @click="eliminarAlumno(alumno.id)">🗑️</button>
           </td>
         </tr>
       </tbody>
