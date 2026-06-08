@@ -1,8 +1,12 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 import api from '../../services/api'
 
-const emit = defineEmits(['alumno-agregado'])
+const props = defineProps({
+  alumnoEditar: Object,
+})
+
+const emit = defineEmits(['alumno-guardado'])
 
 const carreras = ref([])
 
@@ -18,22 +22,42 @@ const cargarCarreras = async () => {
   carreras.value = response.data
 }
 
-const guardarAlumno = async () => {
-  await api.post('/alumnos', {
-    ...alumno.value,
-    carreraId: Number(alumno.value.carreraId),
-    semestre: Number(alumno.value.semestre),
-  })
-
+const limpiarFormulario = () => {
   alumno.value = {
     nombreCompleto: '',
     numeroControl: '',
     carreraId: '',
     semestre: '',
   }
-
-  emit('alumno-agregado')
 }
+
+const guardarAlumno = async () => {
+  if (props.alumnoEditar) {
+    await api.put(`/alumnos/${props.alumnoEditar.id}`, {
+      ...alumno.value,
+      carreraId: Number(alumno.value.carreraId),
+      semestre: Number(alumno.value.semestre),
+    })
+  } else {
+    await api.post('/alumnos', {
+      ...alumno.value,
+      carreraId: Number(alumno.value.carreraId),
+      semestre: Number(alumno.value.semestre),
+    })
+  }
+
+  limpiarFormulario()
+  emit('alumno-guardado')
+}
+
+watch(
+  () => props.alumnoEditar,
+  (nuevoAlumno) => {
+    if (nuevoAlumno) {
+      alumno.value = { ...nuevoAlumno }
+    }
+  },
+)
 
 onMounted(() => {
   cargarCarreras()
@@ -42,7 +66,7 @@ onMounted(() => {
 
 <template>
   <form @submit.prevent="guardarAlumno">
-    <h2>Registrar alumno</h2>
+    <h2>{{ alumnoEditar ? 'Editar alumno' : 'Registrar alumno' }}</h2>
 
     <div>
       <label>Nombre completo:</label>
@@ -69,6 +93,8 @@ onMounted(() => {
       <input v-model="alumno.semestre" type="number" min="1" max="12" required />
     </div>
 
-    <button type="submit">Guardar alumno</button>
+    <button type="submit">
+      {{ alumnoEditar ? 'Actualizar alumno' : 'Guardar alumno' }}
+    </button>
   </form>
 </template>

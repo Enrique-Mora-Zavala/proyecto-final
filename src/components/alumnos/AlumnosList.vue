@@ -4,6 +4,7 @@ import api from '../../services/api'
 
 const alumnos = ref([])
 const carreras = ref([])
+const emit = defineEmits(['editar-alumno'])
 
 const cargarAlumnos = async () => {
   const response = await api.get('/alumnos')
@@ -27,6 +28,10 @@ const eliminarAlumno = async (id) => {
     await api.delete(`/alumnos/${id}`)
     cargarAlumnos()
   }
+}
+
+const seleccionarAlumno = (alumno) => {
+  emit('editar-alumno', alumno)
 }
 
 cargarCarreras()
@@ -62,6 +67,7 @@ onMounted(() => {
           <td>{{ obtenerCarrera(alumno.carreraId) }}</td>
           <td>{{ alumno.semestre }}</td>
           <td>
+            <button @click="seleccionarAlumno(alumno)">Editar</button>
             <button @click="eliminarAlumno(alumno.id)">Eliminar</button>
           </td>
         </tr>
