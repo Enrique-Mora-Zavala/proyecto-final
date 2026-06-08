@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 import api from '../../services/api'
 
 const participaciones = ref([])
@@ -34,6 +34,15 @@ const obtenerTipo = (id) => {
   const tipo = tiposParticipacion.value.find((t) => t.id === id)
   return tipo ? tipo.nombre : 'Sin tipo de participación'
 }
+
+const participacionesConDatos = computed(() => {
+  return participaciones.value.map((participacion) => ({
+    ...participacion,
+    nombreAlumno: obtenerAlumno(participacion.alumnoId),
+    nombreProyecto: obtenerProyecto(participacion.proyectoId),
+    nombreTipo: obtenerTipo(participacion.tipoParticipacionId),
+  }))
+})
 
 const eliminarParticipacion = async (id) => {
   const confirmar = confirm('¿Seguro que deseas eliminar esta participación?')
@@ -72,11 +81,11 @@ onMounted(() => {
       </thead>
 
       <tbody>
-        <tr v-for="participacion in participaciones" :key="participacion.id">
+        <tr v-for="participacion in participacionesConDatos" :key="participacion.id">
           <td>{{ participacion.id }}</td>
-          <td>{{ obtenerAlumno(participacion.alumnoId) }}</td>
-          <td>{{ obtenerProyecto(participacion.proyectoId) }}</td>
-          <td>{{ obtenerTipo(participacion.tipoParticipacionId) }}</td>
+          <td>{{ participacion.nombreAlumno }}</td>
+          <td>{{ participacion.nombreProyecto }}</td>
+          <td>{{ participacion.nombreTipo }}</td>
           <td>{{ participacion.fechaInicio }}</td>
           <td>
             <button @click="seleccionarParticipacion(participacion)">✏️</button>

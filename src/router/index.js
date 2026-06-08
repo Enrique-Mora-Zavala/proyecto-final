@@ -28,6 +28,11 @@ const router = createRouter({
       name: 'participaciones',
       component: ParticipacionesView,
     },
+    {
+      path: '/docentes',
+      name: 'docentes',
+      component: DocentesView,
+    },
   ],
 })
 
