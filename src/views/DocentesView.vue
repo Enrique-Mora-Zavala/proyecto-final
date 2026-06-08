@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import DocenteForm from '../components/docentes/DocenteForm.vue'
+import DocentesForm from '../components/docentes/DocentesForm.vue'
 import DocentesList from '../components/docentes/DocentesList.vue'
 
 const actualizarLista = ref(0)
@@ -20,7 +20,7 @@ const editarDocente = (docente) => {
   <div>
     <h1>Docentes</h1>
 
-    <DocenteForm :docenteEditar="docenteSeleccionado" @docente-guardado="recargarDocentes" />
+    <DocentesForm :docenteEditar="docenteSeleccionado" @docente-guardado="recargarDocentes" />
 
     <hr />
 
