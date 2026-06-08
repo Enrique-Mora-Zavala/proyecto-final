@@ -1,11 +1,24 @@
-<script setup></script>
-
 <template>
-  <h1>You did it!</h1>
-  <p>
-    Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
-  </p>
+  <div>
+    <nav>
+      <router-link to="/">Inicio</router-link> | <router-link to="/alumnos">Alumnos</router-link> |
+      <router-link to="/proyectos">Proyectos</router-link> |
+      <router-link to="/participaciones">Participaciones</router-link>
+    </nav>
+
+    <hr />
+
+    <router-view />
+  </div>
 </template>
 
-<style scoped></style>
+<style>
+nav {
+  padding: 15px;
+}
+
+nav a {
+  margin-right: 10px;
+  text-decoration: none;
+}
+</style>
